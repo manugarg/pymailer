@@ -42,7 +42,7 @@ from email.MIMEBase import MIMEBase
 from email.MIMEMultipart import MIMEMultipart
 from email.MIMEText import MIMEText
 
-def Mail(sender, rcpts, smtpStr='|||', subject=None, body=None, fileList=[]):
+def Mail(sender, rcpts, smtpStr='|||', subject=None, body=None, fileList=[], sendinline=0):
     msg = MIMEMultipart()
     msg['Subject'] = subject
     msg['To'] = ', '.join(rcpts)
@@ -60,7 +60,10 @@ def Mail(sender, rcpts, smtpStr='|||', subject=None, body=None, fileList=[]):
 	msgpart.set_payload(fp.read())
 	fp.close()
 	Encoders.encode_base64(msgpart)
-	msgpart.add_header('Content-Disposition', 'attachment', filename=os.path.basename(filename))
+	if sendinline:
+	    msgpart.add_header('Content-Disposition', 'inline', filename=os.path.basename(filename))
+	else:
+	    msgpart.add_header('Content-Disposition', 'attachment', filename=os.path.basename(filename))
 	msg.attach(msgpart)
     smtp=mta.MTA(smtpStr)
     ret,msg=smtp.sendmail(sender,rcpts,msg.as_string())
@@ -86,17 +89,17 @@ def main():
     for opt, arg in opts:
 	if opt in ('-h','--help'):
 	    usage(0)
-	elif opt in ('-a'):
+	elif opt in ('-a',):
 	    attachList.append(arg)
 	elif opt in ('-s','--subject'):
 	    sub=arg
 	elif opt in ('-f','--from'):
 	    fromaddr=arg
-        elif opt in ('--smtpstr'):
+        elif opt in ('--smtpstr',):
 	    smtpstr=arg
-        elif opt in ('--smtpsvr'):
+        elif opt in ('--smtpsvr',):
 	    smtpsvr=arg
-        elif opt in ('--body'):
+        elif opt in ('--body',):
 	    body=arg
 
     if len(args) < 1:	usage(1)

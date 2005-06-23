@@ -183,6 +183,7 @@ class MailFrame(Frame):
     def __init__(self,parent,files=[]):
 	Frame.__init__(self,parent)
 	self.files = files
+	self.sendinline = IntVar()
 	Label(self,text='Subject').grid(row=0,column=0,sticky=NW,padx=5,pady=5)
 	self.subject=Entry(self,width=25)
 	self.subject.grid(row=0,column=1,padx=5,pady=5,sticky=NW)
@@ -211,6 +212,8 @@ class MailFrame(Frame):
 	    self.subject.insert(0,substr)
 	Button(fileF, text="Find",relief=GROOVE, command=self.FindFile)\
 		.grid(row=0,column=1,padx=5,sticky=NW)	
+	cb=Checkbutton(fileF,text="Send Inline",variable=self.sendinline,onvalue="1",anchor=W)
+	cb.grid(row=0,column=2,sticky=NW,padx=5)
 	fileF.grid(row=2,column=1,pady=5,sticky=NW)
 
     def FindFile(self):
@@ -232,6 +235,7 @@ class MailFrame(Frame):
 	if self.fileEnt.get():
 	    filelist=self.fileEnt.get().split(' | ')
 	varslist.append(filelist)
+	varslist.append(self.sendinline.get())
 	return varslist
 
 # This is the main window
@@ -313,7 +317,7 @@ class MailerWin:
 	win.mainloop()
 
     def done(self):
-	subject,mailbody,filelist = self.mailF.getVars()
+	subject,mailbody,filelist,sendinline = self.mailF.getVars()
 	rcptslist = self.rcptsF.getVars()
 	if len(rcptslist) == 0:
 	    showinfo('Error','Please select recipient/s')
@@ -328,7 +332,7 @@ class MailerWin:
 	    passwd = askpassword(prompt)
 	smtpstr = server+"|"+encrypt+"|"+username+"|"+passwd
 	ret,msg=pymailer.Mail(rcpts=rcptslist, sender=sender,\
-		smtpStr=smtpstr, subject=subject, body=mailbody,fileList=filelist)
+		smtpStr=smtpstr, subject=subject, body=mailbody,fileList=filelist,sendinline=sendinline)
 	if ret == 1:
 	    showinfo('Successful','Message Sent Successfully')
 	    self.root.destroy()
@@ -338,14 +342,15 @@ class MailerWin:
 if __name__ == '__main__':
     try:
 	files = []
-	if os.path.isfile(sys.argv[1]):
-	    files.append(sys.argv[1])
-	if os.path.isdir(sys.argv[1]):
-	    for filename in os.listdir(sys.argv[1]):
-		path=os.path.join(sys.argv[1],filename)
-		if not os.path.isfile(path):
-		    continue
-		files.append(path)
+	for filename in sys.argv[1:]:
+	    if os.path.isfile(filename):
+		files.append(filename)
+	    if os.path.isdir(filename):
+		for filename in os.listdir(filename):
+		    path=os.path.join(filename,filename)
+		    if not os.path.isfile(path):
+			continue
+		    files.append(path)
 	MailerWin(files)              # filename on cmdline
     except IndexError:
         MailerWin()
