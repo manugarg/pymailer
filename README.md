@@ -1,13 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-<head>
-  <meta content="text/html; charset=ISO-8859-1"
- http-equiv="content-type">
-  <title>pyMailer</title>
-</head>
 <body style='font-size:10.0pt;font-family:Helvetica'>
-<h1>About
-pyMailer</h1>
+<h1>About pyMailer</h1>
 pyMailer
 is a cute little app which strives to do just one thing well.
 That
