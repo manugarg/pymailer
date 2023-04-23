@@ -1,43 +1,36 @@
 One of the earliest open source tools I wrote, in 2005. Imported it from [sf.net](https://sourceforge.net/projects/pymailer/) just for memorabilia :-)
 
---------
+---
 
+# About pyMailer
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-<body style='font-size:10.0pt;font-family:Helvetica'>
-<h1>About pyMailer</h1>
-pyMailer
-is a cute little app which strives to do just one thing well.
-That
-one thing is sending mails. pyMailer is written in python which
-automatically provides for platform independence.<br>
-<br>
-<h2>Installation</h2>
-pyMailer
-comes in 2 packages:<br>
--
-python scripts and <br>
--
-win32 executables created by py2exe. <br>
-<br>
-To
-run scripts version, you need python 2.2 or higher version.
+pyMailer is a cute little app which strives to do just one thing well.
+That one thing is sending mails. pyMailer is written in python which
+automatically provides for platform independence.
+
+## Installation<
+
+pyMailer comes in 2 packages:
+
+- python scripts, and
+- win32 executables created by py2exe.
+
+To run scripts version, you need python 2.2 or higher version.
 Installation is pretty simple: just download the zipped files and
-extract to
-some directory. You can run 'installsendto' to add a link to pymailer
-in SendTo on windows. This comes pretty handy for sending files quickly.<br>
-<br>
-<h2>Usage</h2>
-<h3>Command
-Line Version:</h3>
-It's
-mostly meant for unix. (who uses commands on windows anyways ;-)). <br>
-<pre style="font-family: monospace;">
+extract to some directory. You can run 'installsendto' to add a link to pymailer
+in SendTo on windows. This comes pretty handy for sending files quickly.
+
+## Usage
+
+### Command Line Version:
+
+It's mostly meant for unix. (who uses commands on windows anyways ;-)).
+
+```shell
 Usage: pymailer.py [options] to [to ...]*
 
 Options:
-    -h, --help  Print this message and exit.
+-h, --help Print this message and exit.
 
     -a          Attachment. Use multiple '-a' options to attach multiple files
     -s,--subject
@@ -49,17 +42,18 @@ Options:
 
 `to' is the email address of the recipient of the message, and multiple
 recipients may be given.
-</pre>
-<b>Examples:</b><br>
-<br>
-<i>To send using local smtp server-</i>
+```
+
+## Examples
+
+_To send using local smtp server:_
 
 ```shell
 python pymailer.py -s "system configuration file" -a /etc/sysctl.conf \
     -f root manugarg@gmail.com < /dev/null
 ```
 
-<i>To send using your company's smtp server -</i>
+_To send using your company's smtp server:_
 
 ```shell
 python pymailer.py -s "System logs" -a /var/log/messeges -f root --smtpsvr \
@@ -81,7 +75,7 @@ writing this first and command line version was a side product of
 development of this version.
 
 ```
-python pymailerw.py [file1] [file2] ... 
+python pymailerw.py [file1] [file2] ...
 # or, if you are using executables on windows
 pymailerw.exe [file1] [file2] ...
 ```
@@ -188,7 +182,6 @@ user is prompted for the password before sending mail.</td>
 <br>
 <h3>Questions/Suggestions/Bugs</h3>
 <p>I can be reached at manugarg at gmail dot com. 
-I'll be pleased to help you with anything related to pymailer.</p>
+I'll be happy to help you with anything related to pymailer.</p>
 </body>
 </html>
-
