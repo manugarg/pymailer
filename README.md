@@ -52,49 +52,40 @@ recipients may be given.
 </pre>
 <b>Examples:</b><br>
 <br>
-<i>To send using local smtp server
--</i>
-<br>
-<span style="font-family: monospace;">python
-pymailer.py -s
-"system configuration file" -a /etc/sysctl.conf \<br>
-&nbsp;-f root manugarg@gmail.com &lt;/dev/null </span>
-<br>
-<br>
-<i>To send using your company's
-smtp server -</i>
-<br>
-<span style="font-family: monospace;">python
-pymailer.py -s
-"System
-logs" -a /var/log/messeges -f root --smtpsvr\
-<br>
-"smtp.yourcompany.com:25" manugarg@gmail.com &lt;/dev/null<br>
-</span>
-<br>
-<i>To send using gmail's smtp
-server -</i><br>
-<span style="font-family: monospace;">python
-pymailer.py -s
-"other mail" -a $HOME/notes -f manugarg@gmail.com --smtpstr \
-"smtp.gmail.com:587|TLS|manugarg@gmail.com|mypassword"
-manu.garg@work.com &lt;/dev/null</span>
-<br>
-<br>
-<h3>Graphical
-Interface</h3>
+<i>To send using local smtp server-</i>
+
+```shell
+python pymailer.py -s "system configuration file" -a /etc/sysctl.conf \
+    -f root manugarg@gmail.com < /dev/null
+```
+
+<i>To send using your company's smtp server -</i>
+
+```shell
+python pymailer.py -s "System logs" -a /var/log/messeges -f root --smtpsvr \
+    "smtp.yourcompany.com:25" manugarg@gmail.com < /dev/null
+```
+
+<i>To send using gmail's smtp server -</i>
+
+```shell
+python pymailer.py -s "other mail" -a $HOME/notes -f manugarg@gmail.com --smtpstr \
+    "smtp.gmail.com:587|TLS|manugarg@gmail.com|mypassword" \
+    manu.garg@work.com < /dev/null
+```
+
+### Graphical Interface
+
 This version has rather more features and as a matter of fact I started
 writing this first and command line version was a side product of
-development of this version.<small><br>
-</small><br>
-<span style="font-family: monospace;">$python
-pymailerw.py [file1] [file2] ...&nbsp;</span><small><span
- style="font-family: Helvetica,Arial,sans-serif;">&nbsp;
-or, if you are using executables on windows</span></small><br
- style="font-family: monospace;">
-<span style="font-family: monospace;">pymailerw.exe
-[file1] [file2] ... <br>
-<br>
+development of this version.
+
+```
+python pymailerw.py [file1] [file2] ... 
+# or, if you are using executables on windows
+pymailerw.exe [file1] [file2] ...
+```
+
 </span>First run:<br>
 <br>
 <img style="width: 640px; height: 349px;"
