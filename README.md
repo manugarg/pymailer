@@ -8,7 +8,7 @@ pyMailer is a cute little app which strives to do just one thing well.
 That one thing is sending mails. pyMailer is written in python which
 automatically provides for platform independence.
 
-## Installation<
+## Installation
 
 pyMailer comes in 2 packages:
 
