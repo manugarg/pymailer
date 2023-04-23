@@ -1,4 +1,4 @@
-One of the earliest open source tools I wrote, in 2005. Imported it from sf.net just for memorabilia :-)
+One of the earliest open source tools I wrote, in 2005. Imported it from [sf.net](https://sourceforge.net/projects/pymailer/) just for memorabilia :-)
 
 --------
 
