@@ -1,4 +1,6 @@
-One of the earliest open source tools I wrote, in 2005. Imported this project from sf.net just for memorabilia :-)
+One of the earliest open source tools I wrote, in 2005. Imported it from sf.net just for memorabilia :-)
+
+--------
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
